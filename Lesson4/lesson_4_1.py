@@ -7,18 +7,12 @@
 """
 
 from sys import argv
-import argparse
 
-parser = argparse.ArgumentParser(description='Calculate salary')
-parser.add_argument("--prod", type=float, required=True)
-parser.add_argument("--hours", type=float, required=True)
-parser.add_argument("--bonus", type=float, required=True)
+_, price, hour, bonus = argv
 
-args = parser.parse_args(argv[1:])
-
-
-def salary(prod: float, hours: float, bonus: float):
-    return prod * hours + bonus
-
-
-print(f"Заработная плата: {salary(prod=args.prod, hours=args.hours, bonus=args.bonus)} руб")
+try:
+    result = float(price) * float(hour) + float(bonus)
+    print(f"Заработная плата: {result} руб")
+except ValueError as e:
+    print("Введите корректные данные")
+    print(e)
