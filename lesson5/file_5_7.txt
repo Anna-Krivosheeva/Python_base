@@ -1,0 +1,4 @@
+Roga_i_kopita   OOO   20000   6000
+Goznak   AO   50000   5000
+Sberbank   AO   90000   8000
+Mail.ru   AO   80000   0
