@@ -4,24 +4,17 @@
 разделенных пробелами. Программа должна подсчитывать сумму чисел в файле и
 выводить ее на экран.
 """
+import os
+import random
 
-nums_list = []
+file = os.path.join(os.path.dirname(__file__), "file_5_5.txt")
+file_numbers = [random.randint(1, 100) for _ in range(random.randint(10, 20))]
 
-while True:
-    try:
-        num = float(input("Введите число: "))
-        nums_list.append(str(num))
-    except ValueError:
-        print("Ввод чисел завершен")
-        break
+with open(file, "w", encoding="utf-8") as file_write:
+    file_str = " ".join(map(str, file_numbers))
+    file_write.write(file_str)
 
-with open("file_5_5.txt", "w", encoding="utf-8") as file_write:
-    print(f'{" ".join(nums_list)}', file=file_write)
+with open(file, "r", encoding="utf-8") as file_read:
+    nums = map(float, file_read.read().split(" "))
 
-with open("file_5_5.txt", "r", encoding="utf-8") as file_read:
-    nums_list = file_read.readline().split()
-    sum = 0
-    for num in nums_list:
-        sum += float(num)
-
-print(f"Сумма чисел: {sum}")
+print(f"Сумма чисел: {sum(nums)}")
